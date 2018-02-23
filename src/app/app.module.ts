@@ -9,6 +9,7 @@ import { ColorPaletteComponent } from './color-palette/color-palette.component';
 import { AppRoutingModule } from './app-routing.module';
 import {RouteReuseStrategy} from "@angular/router";
 import {CustomReuseStrategy} from "./custom-reuse-strategy";
+import {AppService} from "./app.service";
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {CustomReuseStrategy} from "./custom-reuse-strategy";
     AppRoutingModule
   ],
   providers: [
-    {provide: RouteReuseStrategy, useClass: CustomReuseStrategy}
+    {provide: RouteReuseStrategy, useClass: CustomReuseStrategy},
+    AppService,
   ],
   bootstrap: [AppComponent]
 })

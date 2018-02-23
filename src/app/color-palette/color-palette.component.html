@@ -1,3 +1,17 @@
-<p>
-  color-palette works!
-</p>
+<h3>{{name}}</h3>
+<div>
+  <h4>Common colors</h4>
+  <ul>
+    <li *ngFor="let cColor of commonColors"
+        [ngStyle]="{ 'background-color': cColor.color }"
+        (click)="selectColor(cColor)"></li>
+  </ul>
+</div>
+<div *ngIf="rareColors?.length">
+  <h4>Rare colors</h4>
+  <ul>
+    <li *ngFor="let rColor of rareColors"
+        [ngStyle]="{ 'background-color': rColor.color }"
+        (click)="selectColor(rColor)"></li>
+  </ul>
+</div>
