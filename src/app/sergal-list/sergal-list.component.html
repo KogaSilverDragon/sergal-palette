@@ -1,6 +1,7 @@
 <ul class="sergal-list">
-  <li class="sergal-list-item" *ngFor="let sergal of data">
-    <a [routerLink]="['/sergal', sergal.type]"
-       routerLinkActive="active">{{sergal.name}}</a>
+  <li class="sergal-list-item"
+      routerLinkActive="active"
+      *ngFor="let sergal of data">
+    <a [routerLink]="['/sergal', sergal.type]">{{sergal.name}}</a>
   </li>
 </ul>

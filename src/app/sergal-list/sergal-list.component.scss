@@ -1,0 +1,54 @@
+@import '~reset-css/_reset';
+@import "~compass-mixins/lib/_compass";
+@import "~ceaser-easing/ceaser-easings";
+@import "../../assets/fonts/luzsans-book/luzsans-book";
+
+:host {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.sergal-list {
+  padding: 20px;
+
+  position: relative;
+  font-family: "LuzSans-Book";
+  list-style: none;
+
+  &:before {
+    content: "";
+    width: 300px;
+    height: 350px;
+
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    background-color: black;
+
+    @include simple-transform(1, 19deg, -65px, -60px);
+    @include transition(.5s ease);
+  }
+
+  &-item {
+    font-size: 24px;
+    line-height: 1.5;
+
+    font-family: "LuzSans-Book";
+    position: inherit;
+    @include transition(.8s $easeOutCirc);
+
+    a:link,
+    a:active,
+    a:visited {
+      color: #FFF;
+      text-decoration: none;
+    }
+
+    &.active {
+      font-weight: bold;
+      padding-left: 10px;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+@import '~reset-css/_reset';
+@import "~compass-mixins/lib/_compass";
+@import "../../assets/fonts/luzsans-book/luzsans-book";
+
+:host {
+  display: block;
+  height: calc(100% - 100px);
+}
+
+.title {
+  font-size: 40px;
+  padding: 30px;
+
+  font-family: "LuzSans-Book";
+  text-align: center;
+}
+
+.sergal {
+  height: 400px;
+  margin: auto;
+}

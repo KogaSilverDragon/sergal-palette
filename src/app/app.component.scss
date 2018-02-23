@@ -1,0 +1,18 @@
+@import '~reset-css/_reset';
+@import "~compass-mixins/lib/_compass";
+@import "../assets/fonts/luzsans-book/luzsans-book";
+
+:host {
+  height: 100%;
+  @include display-flex;
+  @include flex-direction(column);
+  background-color: #EFEFEF;
+}
+
+#app-title {
+  font-size: 40px;
+  padding: 30px;
+
+  font-family: "LuzSans-Book";
+  text-align: center;
+}

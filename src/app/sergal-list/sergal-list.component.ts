@@ -8,6 +8,7 @@ import {SergalPaletteInfo} from "../app.component";
 })
 export class SergalListComponent implements OnInit {
   @Input() data: SergalPaletteInfo[];
+  public closed: boolean = true;
 
   constructor() { }
 
