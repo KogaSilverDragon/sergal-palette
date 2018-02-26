@@ -3,8 +3,10 @@
 @import "../../assets/fonts/luzsans-book/luzsans-book";
 
 :host {
-  display: block;
   height: calc(100% - 100px);
+
+  display: block;
+  overflow: hidden;
 }
 
 .title {
@@ -16,6 +18,94 @@
 }
 
 .sergal {
-  height: 400px;
+  height: calc(100% - 80px);
+
+  text-align: center;
   margin: auto;
+}
+
+.side {
+  height: 600px;
+
+  margin: auto;
+  position: relative;
+  display: inline-block;
+}
+
+.lines {
+  height: 100%;
+  mix-blend-mode: multiply;
+  @include transition(.5s ease);
+}
+.coat,
+.belly {
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  mix-blend-mode: multiply;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  @include transition(.5s ease);
+}
+
+.pure-northern {
+  .coat {
+    mask-image: url("../../assets/images/pure-northern/coat.png");
+    mask-position: 0 3px;
+  }
+  .belly {
+    mask-image: url("../../assets/images/pure-northern/belly.png");
+    mask-position: 0 3px;
+  }
+}
+
+.civilized-northern {
+  .coat { mask-image: url("../../assets/images/civilized-northern/coat.png"); }
+  .belly { mask-image: url("../../assets/images/civilized-northern/belly.png"); }
+}
+
+.western {
+  .coat {
+    mask-image: url("../../assets/images/western/coat.png");
+    mask-position: 1px 0;
+  }
+  .belly {
+    mask-image: url("../../assets/images/western/belly.png");
+    mask-position: 1px 0;
+  }
+}
+
+.eastern {
+  .coat {
+    mask-image: url("../../assets/images/eastern/coat.png");
+    mask-position: 1px 0;
+  }
+  .belly {
+    mask-image: url("../../assets/images/eastern/belly.png");
+    mask-position: 1px 0;
+  }
+}
+
+.pure-southern {
+  .coat { mask-image: url("../../assets/images/pure-southern/coat.png"); }
+  .belly { mask-image: url("../../assets/images/pure-southern/belly.png"); }
+}
+
+.civilized-southern {
+  .coat {
+    mask-image: url("../../assets/images/civilized-southern/coat.png");
+    mask-position: -7px 0;
+  }
+  .belly {
+    mask-image: url("../../assets/images/civilized-southern/belly.png");
+    mask-position: -7px 0;
+  }
+}
+
+.color-code {
+  font-family: "LuzSans-Book";
+  font-size: 18px;
 }

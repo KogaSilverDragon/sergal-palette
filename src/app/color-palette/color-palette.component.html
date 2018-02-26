@@ -1,9 +1,11 @@
-<h3 class="palette-name">{{name}}</h3>
+<h3 class="palette-name"
+    (click)="active = !active;">{{name}}</h3>
 <div>
   <h4 class="color-group-name">Common colors</h4>
   <ul class="color-palette">
     <li class="color-palette-item"
         *ngFor="let cColor of commonColors"
+        [ngClass]="{ 'active': cColor.id === selectedColor.id }"
         [ngStyle]="{ 'background-color': cColor.color }"
         (click)="selectColor(cColor)"></li>
   </ul>

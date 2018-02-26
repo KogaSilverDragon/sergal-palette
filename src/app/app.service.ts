@@ -3,8 +3,8 @@ import {SergalPaletteInfo} from "./app.component";
 
 const SERGAL_DATA: SergalPaletteInfo[] = [
   {
-    name: 'Pure Northen',
-    type: 'pure_northen',
+    name: 'Pure Northern',
+    type: 'pure-northern',
     eyeColors: [],
     coatColors: [
       {
@@ -102,8 +102,8 @@ const SERGAL_DATA: SergalPaletteInfo[] = [
     ]
   },
   {
-    name: 'Civilized Northen',
-    type: 'civilized_northen',
+    name: 'Civilized Northern',
+    type: 'civilized-northern',
     eyeColors: [],
     coatColors: [
       {
@@ -476,7 +476,7 @@ const SERGAL_DATA: SergalPaletteInfo[] = [
   },
   {
     name: 'Pure Southern',
-    type: 'pure_southern',
+    type: 'pure-southern',
     eyeColors: [],
     coatColors: [
       {
@@ -580,7 +580,7 @@ const SERGAL_DATA: SergalPaletteInfo[] = [
   },
   {
     name: 'Civilized Southern',
-    type: 'civilized_southern',
+    type: 'civilized-southern',
     eyeColors: [],
     coatColors: [
       {

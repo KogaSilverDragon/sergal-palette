@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, HostBinding, Input, OnInit, Output} from '@angular/core';
 import {ColorInfo} from "../app.component";
 
 @Component({
@@ -9,6 +9,8 @@ import {ColorInfo} from "../app.component";
 export class ColorPaletteComponent implements OnInit {
   @Input() name: string;
   @Input('color-list') colorList: ColorInfo[];
+  @Output() onSelect = new EventEmitter<ColorInfo>();
+  @HostBinding('class.active') active: boolean = false;
   public commonColors: ColorInfo[];
   public rareColors: ColorInfo[];
   public selectedColor: ColorInfo;
@@ -18,7 +20,13 @@ export class ColorPaletteComponent implements OnInit {
   ngOnInit() {
     this.commonColors = this.colorList.filter(color => !color.rare);
     this.rareColors = this.colorList.filter(color => color.rare);
+    if (!this.selectedColor) {
+      this.selectColor(this.commonColors[0]);
+    }
   }
 
-  public selectColor(color:ColorInfo): void { this.selectedColor = color; console.log(color) }
+  public selectColor(color:ColorInfo): void {
+    this.selectedColor = color;
+    this.onSelect.emit(color);
+  }
 }

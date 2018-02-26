@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import 'rxjs/add/operator/switchMap';
-import {SergalPaletteInfo} from "../app.component";
+import {ColorInfo, SergalPaletteInfo} from "../app.component";
 import {AppService} from "../app.service";
 
 @Component({
@@ -10,14 +10,21 @@ import {AppService} from "../app.service";
   styleUrls: ['./sergal-detail.component.scss']
 })
 export class SergalDetailComponent implements OnInit {
-  type: string = '';
-  data: SergalPaletteInfo;
+  public type: string = '';
+  public data: SergalPaletteInfo;
+  public selectedCoat: ColorInfo;
+  public selectedBelly: ColorInfo;
+
   constructor(private route: ActivatedRoute,
               private appService: AppService) { }
 
   ngOnInit() {
     this.type = this.route.snapshot.paramMap.get('type');
+
     this.data = this.appService.getSergal(this.type);
   }
+
+  updateCoat(color) { this.selectedCoat = color; }
+  updateBelly(color) { this.selectedBelly = color; }
 
 }

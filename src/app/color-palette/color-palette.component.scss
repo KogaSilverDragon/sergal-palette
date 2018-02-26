@@ -4,27 +4,34 @@
 @import "../../assets/fonts/luzsans-book/luzsans-book";
 
 :host {
+  height: 320px;
+
   display: inline-block;
   position: relative;
   font-family: "LuzSans-Book";
   color: #FFF;
   float: left;
   margin: 40px;
+  @include transition(.8s $easeOutCirc);
 
   &:before {
     content: "";
     width: 320px;
-    height: 380px;
+    height: 400px;
 
     position: absolute;
     display: block;
     top: 0;
     left: 0;
-    background-color: black;
+    background-color: #646464;
 
-    @include simple-transform(1, -6deg, -16px, -32px);
     @include transition(.5s ease);
+    @include simple-transform(1, -6deg, -16px, -32px);
   }
+}
+
+:host(.active) {
+  margin-top: -250px;
 }
 
 .palette-name {
@@ -32,7 +39,8 @@
   line-height: 1.5;
 
   position: inherit;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .color-group-name {
@@ -50,12 +58,11 @@
 
   list-style: none;
 
-
   &-item {
     width: 40px;
     height: 40px;
-    margin: 5px;
-    border: 0;
+    margin: 5px 5px 0;
+    border: 0px solid transparent;
     display: inline-block;
 
     position: inherit;
@@ -63,6 +70,8 @@
     @include transition(.8s $easeOutCirc);
 
     &.active {
+      width: 36px;
+      height: 36px;
       border: 2px #FFF solid;
     }
   }
