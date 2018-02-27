@@ -11,8 +11,8 @@
          [ngStyle]="{ 'background-color': selectedBelly?.color }"></div>
   </div>
   <pre class="color-code">
-    Coat: {{selectedCoat.color.toUpperCase()}}
-    Belly: {{selectedBelly.color.toUpperCase()}}
+    Coat: {{selectedCoat?.color.toUpperCase()}}
+    Belly: {{selectedBelly?.color.toUpperCase()}}
   </pre>
 </div>
 <color-palette [name]="'Coat'"

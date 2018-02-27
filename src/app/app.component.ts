@@ -22,8 +22,8 @@ export interface ColorInfo {
 })
 
 export class AppComponent {
-  title: string = 'Sergal Palette';
-  sergalData: SergalPaletteInfo[];
+  public sergalData: SergalPaletteInfo[];
+  public aboutToggle: boolean = false;
 
   constructor(private appService: AppService) { }
 

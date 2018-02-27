@@ -1,3 +1,47 @@
-<h1 id="app-title">{{title}}</h1>
+<h1 id="app-title">Sergal Palette</h1>
 <sergal-list [data]="sergalData"></sergal-list>
 <router-outlet></router-outlet>
+<div id="about"
+     [ngClass]="{ 'active': aboutToggle }">
+  <div id="about-toggle"
+       (click)="aboutToggle = !aboutToggle;"></div>
+  <div id="about-content">
+    <h2 class="about-titles">About the project</h2>
+    <p>Howdy! I'm Marcos Koga(aka Koga SilverDragon) and did this little project(Which it's just a draft and I want to make improve it later!) after Drago's idea, redesigned by Flam and with fresh new info from Kiki!</p>
+    <p>Thanks a lot for the help! 💙</p>
+    <h2 class="about-titles">About Vilous</h2>
+    <ul id="about-links">
+      <li>Vilous - Artwork and Design @
+        <a href="http://www.furaffinity.net/user/mick39"
+           target="_blank"
+           rel="noopener noreferrer">Mick39’s FA</a>
+      </li>
+      <li>Vilous - Story and Lore @
+        <a href="http://www.furaffinity.net/user/Kiki-UMA"
+           target="_blank"
+           rel="noopener noreferrer">Kiki’s FA</a>
+      </li>
+      <li>
+        <a href="https://www.patreon.com/mick39"
+           target="_blank"
+           rel="noopener noreferrer">Mick39’s Patreon</a>
+      </li>
+      <li>
+        <a href="https://www.patreon.com/Tenteraten"
+           target="_blank"
+           rel="noopener noreferrer">
+          Kiki’s Patreon for Vilous concepts in development
+        </a>
+      </li>
+      <li>
+        <a href="http://vilous.net/"
+           target="_blank"
+           rel="noopener noreferrer">Vilous official website</a>
+      </li>
+      <li>
+        <a href="http://vilous.net/wiki/Vilous_Wiki"
+           target="_blank"
+           rel="noopener noreferrer">Vilous official Wiki</a>
+      </li>
+    </ul>
+</div>

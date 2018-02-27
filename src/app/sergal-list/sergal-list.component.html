@@ -2,6 +2,6 @@
   <li class="sergal-list-item"
       routerLinkActive="active"
       *ngFor="let sergal of data">
-    <a [routerLink]="['/sergal', sergal.type]">{{sergal.name}}</a>
+    <a [routerLink]="['/', sergal.type]">{{sergal.name}}</a>
   </li>
 </ul>

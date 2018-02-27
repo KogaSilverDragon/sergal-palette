@@ -3,13 +3,8 @@ import {RouterModule, Routes} from "@angular/router";
 import {SergalDetailComponent} from "./sergal-detail/sergal-detail.component";
 
 const routes: Routes = [
-  { path: 'sergal', redirectTo: '', pathMatch: 'full' },
-  {
-    path: 'sergal',
-    children: [
-      { path: ':type', component: SergalDetailComponent }
-    ]
-  }
+  { path: '*', redirectTo: 'pure-northern', pathMatch: 'full' },
+  { path: ':type', component: SergalDetailComponent }
 ];
 
 @NgModule({

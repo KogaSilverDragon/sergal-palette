@@ -20,7 +20,6 @@ export class SergalDetailComponent implements OnInit {
 
   ngOnInit() {
     this.type = this.route.snapshot.paramMap.get('type');
-
     this.data = this.appService.getSergal(this.type);
   }
 
