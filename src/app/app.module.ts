@@ -10,7 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {RouteReuseStrategy} from "@angular/router";
 import {CustomReuseStrategy} from "./custom-reuse-strategy";
 import {AppService} from "./app.service";
-//import { KonamiModule } from 'ngx-konami';
+import {KonamiModule} from "ngx-konami/dist";
 
 
 @NgModule({
@@ -23,7 +23,7 @@ import {AppService} from "./app.service";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    //KonamiModule
+    KonamiModule
   ],
   providers: [
     {provide: RouteReuseStrategy, useClass: CustomReuseStrategy},

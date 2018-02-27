@@ -4,6 +4,7 @@ import {SergalDetailComponent} from "./sergal-detail/sergal-detail.component";
 
 const routes: Routes = [
   { path: '*', redirectTo: 'pure-northern', pathMatch: 'full' },
+  { path: '', redirectTo: 'pure-northern', pathMatch: 'full' },
   { path: ':type', component: SergalDetailComponent }
 ];
 

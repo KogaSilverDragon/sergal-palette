@@ -1,5 +1,6 @@
 @import '~reset-css/_reset';
 @import "~compass-mixins/lib/_compass";
+@import "~compass-mixins/lib/_animate";
 @import "~ceaser-easing/ceaser-easings";
 @import "../assets/fonts/luzsans-book/luzsans-book";
 
@@ -28,6 +29,7 @@
   background-color: rgba(30, 30, 30, 0);
   pointer-events: none;
   z-index: 9999;
+  overflow: hidden;
   @include transition(.5s ease);
   &-toggle {
     width: 200px;
@@ -109,4 +111,69 @@
 .about-titles {
   font-size: 24px;
   margin-bottom: 10px;
+}
+
+#konami {
+  width: 200px;
+  height: 200px;
+
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 99999;
+  pointer-events: none;
+  @include translate(-100%, -50%);
+
+  &.active {
+    @include animation(floating 20s linear);
+    @include animation-fill-mode(forward)
+  }
+}
+
+  #Drago,
+  #Flam,
+  #Koga {
+    width: 200px;
+    height: 200px;
+
+    float: right;
+    @include translateY(-10%);
+  }
+  #Drago {
+    margin-top: -150%;
+    background: url("../assets/images/uwu/uwu.png") no-repeat;
+    background-size: contain;
+    @include animation(floating-bubble 3s ease 0s infinite alternate);
+  }
+  #Flam {
+    margin-top: 100%;
+    margin-right: 300%;
+    background: url("../assets/images/uwu/flamstickersdrawing.png") no-repeat;
+    background-size: cover;
+    @include animation(floating-bubble 3s ease 1s infinite alternate);
+  }
+  #Koga {
+    margin-top: -300%;
+    margin-right: 600%;
+    background: url("../assets/images/uwu/kogatea.png") no-repeat;
+    background-size: contain;
+    @include animation(floating-bubble 3s ease 0s infinite alternate);
+  }
+
+@include keyframes (floating-bubble) {
+  from {
+    @include translateY(-10%);
+  }
+  to {
+    @include translateY(10%);
+  }
+}
+
+@include keyframes (floating) {
+  from {
+    left: 0%;
+  }
+  to {
+    left: calc(280% + 200px);
+  }
 }

@@ -24,10 +24,20 @@ export interface ColorInfo {
 export class AppComponent {
   public sergalData: SergalPaletteInfo[];
   public aboutToggle: boolean = false;
+  public konamiActive: boolean = false;
 
   constructor(private appService: AppService) { }
 
   ngOnInit() {
     this.sergalData = this.appService.getSergalList();
+  }
+
+  yay(){
+    if (!this.konamiActive) {
+      this.konamiActive = true;
+      setTimeout(() => {
+        this.konamiActive = false;
+      }, 20000);
+    }
   }
 }
