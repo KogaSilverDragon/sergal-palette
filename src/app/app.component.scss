@@ -79,20 +79,19 @@
   }
     &-links {
       line-height: 1.4;
-
-      a { @include transition(.2s ease); }
-
-      a:link,
-      a:visited,
-      a:active {
-        color: #FFF;
-      }
-      a:focus,
-      a:hover {
-        background-color: #EFEFEF;
-        color: #646464;
-      }
     }
+  a { @include transition(.2s ease); }
+
+  a:link,
+  a:visited,
+  a:active {
+    color: #FFF;
+  }
+  a:focus,
+  a:hover {
+    background-color: #EFEFEF;
+    color: #646464;
+  }
   &.active {
     background-color: rgba(20, 20, 20, .8);
     pointer-events: initial;
@@ -132,7 +131,8 @@
 
   #Drago,
   #Flam,
-  #Koga {
+  #Koga,
+  #MickKiki {
     width: 200px;
     height: 200px;
 
@@ -143,29 +143,36 @@
     margin-top: -150%;
     background: url("../assets/images/uwu/uwu.png") no-repeat;
     background-size: contain;
-    @include animation(floating-bubble 3s ease 0s infinite alternate);
+    @include animation(floating-bubble 1s ease 0s infinite alternate);
   }
   #Flam {
     margin-top: 100%;
     margin-right: 300%;
     background: url("../assets/images/uwu/flamstickersdrawing.png") no-repeat;
     background-size: cover;
-    @include animation(floating-bubble 3s ease 1s infinite alternate);
+    @include animation(floating-bubble 1s ease 1s infinite alternate);
   }
   #Koga {
     margin-top: -300%;
     margin-right: 600%;
     background: url("../assets/images/uwu/kogatea.png") no-repeat;
     background-size: contain;
-    @include animation(floating-bubble 3s ease 0s infinite alternate);
+    @include animation(floating-bubble 1s ease 0s infinite alternate);
+  }
+  #MickKiki {
+    margin-top: -100%;
+    margin-right: 900%;
+    background: url("../assets/images/uwu/mickKiki2.png") no-repeat;
+    background-size: cover;
+    @include animation(floating-bubble 1s ease 1s infinite alternate);
   }
 
 @include keyframes (floating-bubble) {
   from {
-    @include translateY(-10%);
+    @include translateY(-20%);
   }
   to {
-    @include translateY(10%);
+    @include translateY(20%);
   }
 }
 
