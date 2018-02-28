@@ -11,7 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {RouteReuseStrategy} from "@angular/router";
 import {CustomReuseStrategy} from "./custom-reuse-strategy";
 import {AppService} from "./app.service";
-import {KonamiModule} from "ngx-konami/dist";
+import {KonamiModule} from "./ngx-konami";
 
 
 @NgModule({
