@@ -1,6 +1,9 @@
 <h1 id="app-title">Sergal Palette</h1>
 <sergal-list [data]="sergalData"></sergal-list>
-<router-outlet></router-outlet>
+<div id="outlet-wrapper"
+     [@routerAnimation]="getRouteAnimation(route)">
+  <router-outlet #route="outlet"></router-outlet>
+</div>
 <div id="about"
      [ngClass]="{ 'active': aboutToggle }">
   <div id="about-toggle"
@@ -8,10 +11,22 @@
   <div id="about-content">
     <h2 class="about-titles">About the project</h2>
     <p>
-      Howdy! I'm Marcos Koga(aka Koga SilverDragon) and did this little project(Which it's just a draft and I want to make improve it later!) after Drago's idea, redesigned by Flam and with fresh new info from Kiki!
+      Howdy! I'm Marcos Koga(aka Koga SilverDragon) and did this little project(Which it's just a draft and I want to make improve it later!) after
+      <a href="https://telegram.me/Maplesquid"
+         target="_blank"
+         rel="noopener noreferrer">Drago's</a>
+      idea, redesigned by
+      <a href="https://telegram.me/FlamSinger"
+         target="_blank"
+         rel="noopener noreferrer">Flam</a>
+      and with fresh new info from
+      <a href="https://telegram.me/Tenteraten_CR"
+         target="_blank"
+         rel="noopener noreferrer">Kiki</a>!
     </p>
     <p>Thanks a lot for the help! 💙</p>
-    <p>If you have any feedback and/or suggestions, feel free to poke me at Telegram! My handle is:
+    <p>If you have any feedback and/or suggestions, feel free to poke me at Telegram!</p>
+    <p>My handle is:
       <a href="https://telegram.me/KogaSilverDragon"
       target="_blank"
       rel="noopener noreferrer">@KogaSilverDragon</a>

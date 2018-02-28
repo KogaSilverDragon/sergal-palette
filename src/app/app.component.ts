@@ -1,5 +1,13 @@
 import { Component } from '@angular/core';
 import {AppService} from "./app.service";
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  query,
+} from '@angular/animations';
 
 export interface SergalPaletteInfo {
   name: string;
@@ -18,7 +26,31 @@ export interface ColorInfo {
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [
+    trigger('routerAnimation', [
+      transition('* <=> *', [
+        // Initial state of new route
+        query(':enter',
+          style({ transform: 'translateX(-100%)' }),
+          {optional:true}),
+
+        // move page off screen right on leave
+        query(':leave',
+          animate('200ms ease-in',
+            style({ transform: 'translateX(100%)' })
+          ),
+          {optional:true}),
+
+        // move page in screen from left to right
+        query(':enter',
+          animate('200ms ease-out',
+            style({ transform: 'translateX(0%)' })
+          ),
+          {optional:true}),
+      ])
+    ])
+  ]
 })
 
 export class AppComponent {
@@ -30,6 +62,11 @@ export class AppComponent {
 
   ngOnInit() {
     this.sergalData = this.appService.getSergalList();
+  }
+
+  getRouteAnimation(outlet) {
+    if (!outlet.activated) { return null; }
+    return outlet.activated.instance.data.type;
   }
 
   yay(){

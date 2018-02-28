@@ -7,7 +7,7 @@ import {ColorInfo} from "../app.component";
   styleUrls: ['./color-palette.component.scss']
 })
 export class ColorPaletteComponent implements OnInit {
-  @Input() name: string;
+  @Input() name: string = 'Loading...';
   @Input('color-list') colorList: ColorInfo[];
   @Output() onSelect = new EventEmitter<ColorInfo>();
   @HostBinding('class.active') active: boolean = false;
