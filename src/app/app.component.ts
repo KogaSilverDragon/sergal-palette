@@ -8,6 +8,9 @@ import {
   transition,
   query,
 } from '@angular/animations';
+import {NavigationEnd, Router} from "@angular/router";
+
+declare let ga: Function;
 
 export interface SergalPaletteInfo {
   name: string;
@@ -58,7 +61,15 @@ export class AppComponent {
   public aboutToggle: boolean = false;
   public konamiActive: boolean = false;
 
-  constructor(private appService: AppService) { }
+  constructor(private appService: AppService,
+              public router: Router) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        ga('set', 'page', '/sergal-palette' + event.urlAfterRedirects);
+        ga('send', 'pageview');
+      }
+    });
+  }
 
   ngOnInit() {
     this.sergalData = this.appService.getSergalList();
