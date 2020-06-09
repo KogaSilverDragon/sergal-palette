@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
-import {AppService} from "./app.service";
+import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import {AppService} from './app.service';
 import {
   trigger,
-  state,
   style,
   animate,
   transition,
   query,
 } from '@angular/animations';
-import {NavigationEnd, Router} from "@angular/router";
+import {ActivatedRoute, NavigationEnd, Router, RoutesRecognized} from '@angular/router';
+import {Subscription} from 'rxjs/Subscription';
 
 declare let ga: Function;
 
@@ -36,51 +36,94 @@ export interface ColorInfo {
         // Initial state of new route
         query(':enter',
           style({ transform: 'translateX(-100%)' }),
-          {optional:true}),
+          {optional: true}),
 
         // move page off screen right on leave
         query(':leave',
           animate('200ms ease-in',
-            style({ transform: 'translateX(100%)' })
+            style({
+              transform: 'translateX(100%)',
+              position: 'absolute'
+            })
           ),
-          {optional:true}),
+          {optional: true}),
 
         // move page in screen from left to right
         query(':enter',
           animate('200ms ease-out',
             style({ transform: 'translateX(0%)' })
           ),
-          {optional:true}),
+          {optional: true}),
       ])
     ])
   ]
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy {
   public sergalData: SergalPaletteInfo[];
   public aboutToggle: boolean = false;
+  public menuToggle: boolean = false;
   public konamiActive: boolean = false;
+  public selectedType: string;
+  public selectedPalette: 'coat' | 'belly';
+
+  private routerSub: Subscription;
+
+  get selectedCoat(): ColorInfo { return this.appService.selectedCoat; }
+  set selectedCoat(colorInfo: ColorInfo) { this.appService.selectedCoat = colorInfo; }
+  get selectedBelly(): ColorInfo { return this.appService.selectedBelly; }
+  set selectedBelly(colorInfo: ColorInfo) { this.appService.selectedBelly = colorInfo; }
+
+  private get data(): SergalPaletteInfo { return this.appService.getSergal(this.selectedType); }
+  get coatColors(): ColorInfo[] { return this.data ? this.data.coatColors : []; }
+  get bellyColors(): ColorInfo[] { return this.data ? this.data.bellyColors : []; }
+  get eyeColors(): ColorInfo[] { return this.data ? this.data.eyeColors : []; }
 
   constructor(private appService: AppService,
-              public router: Router) {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
+              private router: Router,
+              private cdr: ChangeDetectorRef) {
+    this.routerSub = this.router.events.subscribe(event => {
+      if (event instanceof RoutesRecognized) {
+        this.selectedType = event.state.root.firstChild.paramMap.get('type');
+      } else if (event instanceof NavigationEnd) {
         ga('set', 'page', '/sergal-palette' + event.urlAfterRedirects);
         ga('send', 'pageview');
+        this.resetColors();
       }
     });
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.sergalData = this.appService.getSergalList();
+    document.addEventListener('keydown', this.closeOnEscape);
   }
 
-  getRouteAnimation(outlet) {
+  ngOnDestroy(): void {
+    document.removeEventListener('keydown', this.closeOnEscape);
+    this.routerSub.unsubscribe();
+  }
+
+  getRouteAnimation(outlet): string {
     if (!outlet.activated) { return null; }
     return outlet.activated.instance.data.type;
   }
 
-  yay(){
+  private resetColors(): void {
+    this.selectedCoat = this.coatColors[0];
+    this.selectedBelly = this.bellyColors[0];
+    this.cdr.markForCheck();
+  }
+
+  public isCoatSelected(): boolean { return this.selectedPalette === 'coat'; }
+  public isBellySelected(): boolean { return this.selectedPalette === 'belly'; }
+  public closePalette(): void { this.selectedPalette = null; }
+
+
+  private closeOnEscape = (event: KeyboardEvent): void => {
+    if (event.code === 'Escape') { this.aboutToggle = false; }
+  }
+
+  yay(): void {
     if (!this.konamiActive) {
       this.konamiActive = true;
       setTimeout(() => {

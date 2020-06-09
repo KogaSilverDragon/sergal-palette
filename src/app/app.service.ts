@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {SergalPaletteInfo} from "./app.component";
+import {ColorInfo, SergalPaletteInfo} from './app.component';
 
 const SERGAL_DATA: SergalPaletteInfo[] = [
   {
@@ -711,10 +711,14 @@ const SERGAL_DATA: SergalPaletteInfo[] = [
 
 @Injectable()
 export class AppService {
+  public selectedCoat: ColorInfo;
+  public selectedBelly: ColorInfo;
 
   constructor() { }
 
   public getSergalList(): SergalPaletteInfo[] { return SERGAL_DATA; }
-  public getSergal(type: string): SergalPaletteInfo { return SERGAL_DATA.find(sergal => sergal.type === type); }
+  public getSergal(type: string): SergalPaletteInfo {
+    return SERGAL_DATA.find(sergal => sergal.type === type);
+  }
 
 }

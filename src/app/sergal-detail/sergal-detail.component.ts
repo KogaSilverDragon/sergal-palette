@@ -12,8 +12,8 @@ import {AppService} from "../app.service";
 export class SergalDetailComponent implements OnInit {
   public type: string = '';
   public data: SergalPaletteInfo;
-  public selectedCoat: ColorInfo;
-  public selectedBelly: ColorInfo;
+  get selectedCoat(): ColorInfo { return this.appService.selectedCoat; }
+  get selectedBelly(): ColorInfo { return this.appService.selectedBelly; }
 
   constructor(private route: ActivatedRoute,
               private appService: AppService) { }
@@ -22,8 +22,4 @@ export class SergalDetailComponent implements OnInit {
     this.type = this.route.snapshot.paramMap.get('type');
     this.data = this.appService.getSergal(this.type);
   }
-
-  updateCoat(color) { this.selectedCoat = color; }
-  updateBelly(color) { this.selectedBelly = color; }
-
 }

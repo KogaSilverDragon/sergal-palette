@@ -1,80 +1,42 @@
-@import '~reset-css/_reset';
 @import "~compass-mixins/lib/_compass";
 @import "~ceaser-easing/ceaser-easings";
 @import "../../assets/fonts/luzsans-book/luzsans-book";
+@import "~bulma/sass/utilities/all";
 
-:host {
-  height: 320px;
+//:host {
+  //height: 320px;
+  //
+  //display: inline-block;
+  //position: relative;
+  //font-family: "LuzSans-Book";
+  //color: #FFF;
+  //margin: 40px 60px;
+  //vertical-align: text-top;
+  //text-align: left;
+  //@include transition(.8s $easeOutCirc);
+  //@include user-select(none);
 
-  display: inline-block;
-  position: relative;
-  font-family: "LuzSans-Book";
-  color: #FFF;
-  margin: 40px 60px;
-  vertical-align: text-top;
-  text-align: left;
-  @include transition(.8s $easeOutCirc);
-  @include user-select(none);
+  //&:before {
+  //  content: "";
+  //  width: 320px;
+  //  height: 400px;
+  //
+  //  position: absolute;
+  //  display: block;
+  //  top: 0;
+  //  left: 0;
+  //  background-color: #646464;
+  //
+  //  @include transition(.5s ease);
+  //  @include simple-transform(1, -6deg, -16px, -32px);
+  //}
+//}
 
-  &:before {
-    content: "";
-    width: 320px;
-    height: 400px;
-
-    position: absolute;
-    display: block;
-    top: 0;
-    left: 0;
-    background-color: #646464;
-
-    @include transition(.5s ease);
-    @include simple-transform(1, -6deg, -16px, -32px);
-  }
-}
-
-:host(.active) {
-  margin-top: -250px;
-}
-
-.palette-name {
-  font-size: 22px;
-  line-height: 1.5;
-
-  position: inherit;
-  padding-bottom: 10px;
+.color-palette-item {
   cursor: pointer;
-}
+  @include transition(.8s $easeOutCirc);
 
-.color-group-name {
-  line-height: 1;
-  font-size: 16px;
-  padding-left: 15px;
-
-  position: relative;
-}
-
-.color-palette {
-  padding: 10px;
-  width: 250px;
-  position: relative;
-
-  list-style: none;
-
-  &-item {
-    width: 40px;
-    height: 40px;
-    margin: 5px 5px 0;
-    border: 0px solid transparent;
-    display: inline-block;
-
-    position: inherit;
-    cursor: pointer;
-    @include transition(.8s $easeOutCirc);
-
-    &.active {
-      width: 36px;
-      height: 36px;
-      border: 2px #FFF solid;
-    }
+  &.active {
+    box-shadow: 0 0 2px 2px $info;
   }
 }

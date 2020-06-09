@@ -1,14 +1,11 @@
-@import '~reset-css/_reset';
 @import "~compass-mixins/lib/_compass";
 @import "../../assets/fonts/luzsans-book/luzsans-book";
 
 :host {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
 
-  position: absolute;
-  display: block;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .title {
@@ -20,18 +17,19 @@
 }
 
 .sergal {
-  height: calc(100% - 80px);
+  //height: calc(100% - 80px);
 
   text-align: center;
   margin: auto;
+  flex: 1 1 auto;
 }
 
 .side {
-  height: 600px;
+  height: 60vh;
 
-  margin: auto;
   position: relative;
   display: inline-block;
+  flex: 1 1 auto;
 }
 
 .lines {
@@ -108,6 +106,5 @@
 }
 
 .color-code {
-  font-family: "LuzSans-Book";
-  font-size: 18px;
+  font-size: 1.2em;
 }

@@ -1,21 +1,44 @@
-<h3 class="palette-name"
-    (click)="active = !active;">{{name}}</h3>
-<div>
-  <h4 class="color-group-name">Common colors</h4>
-  <ul class="color-palette">
-    <li class="color-palette-item"
-        *ngFor="let cColor of commonColors"
-        [ngClass]="{ 'active': cColor.id === selectedColor.id }"
-        [ngStyle]="{ 'background-color': cColor.color }"
-        (click)="selectColor(cColor)"></li>
-  </ul>
+<div class="modal is-active">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <div class="box">
+      <h3 class="title is-4">{{name}}</h3>
+      <div class="columns">
+        <div class="column"
+             [ngClass]="{
+               'is-6': rareColors?.length,
+               'is-12': !rareColors?.length
+             }">
+          <h4 class="subtitle is-6">Common colors</h4>
+          <div class="columns is-multiline is-mobile">
+            <div class="column is-3"
+              *ngFor="let cColor of commonColors">
+              <div class="color-palette-item image is-square"
+                  [ngClass]="{ 'active': cColor.id === selectedColor.id }"
+                  [ngStyle]="{ 'background-color': cColor.color }"
+                  (click)="selectColor(cColor)"></div>
+            </div>
+          </div>
+        </div>
+        <div class="column is-6"
+             *ngIf="rareColors?.length">
+          <h4 class="subtitle is-6">Rare colors</h4>
+          <div class="columns is-multiline is-mobile">
+            <div class="column is-3"
+                 *ngFor="let rColor of rareColors">
+              <div class="color-palette-item image is-square"
+                [ngClass]="{ 'active': rColor.id === selectedColor.id }"
+                [ngStyle]="{ 'background-color': rColor.color }"
+                (click)="selectColor(rColor)"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="modal-close is-large"
+          aria-label="close"
+          (click)="close()"></button>
 </div>
-<div *ngIf="rareColors?.length">
-  <h4 class="color-group-name">Rare colors</h4>
-  <ul class="color-palette">
-    <li class="color-palette-item"
-        *ngFor="let rColor of rareColors"
-        [ngStyle]="{ 'background-color': rColor.color }"
-        (click)="selectColor(rColor)"></li>
-  </ul>
-</div>
+
+

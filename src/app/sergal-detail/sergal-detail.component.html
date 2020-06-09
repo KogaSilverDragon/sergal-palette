@@ -1,23 +1,17 @@
-<div class="sergal {{type}}">
-  <div class="side"
-        *ngIf="type">
-    <img class="lines"
-         [src]="'./assets/images/' + type + '/side.png'"/>
-    <div class="coat"
-         *ngIf="selectedCoat"
-         [ngStyle]="{ 'background-color': selectedCoat?.color }"></div>
-    <div class="belly"
-         *ngIf="selectedBelly"
-         [ngStyle]="{ 'background-color': selectedBelly?.color }"></div>
+<div class="sergal {{type}} columns is-multiline">
+  <div class="column is-12">
+    <div class="side"
+          *ngIf="type">
+      <img class="lines"
+           [src]="'./assets/images/' + type + '/side.png'"/>
+      <div class="coat"
+           [ngStyle]="{ 'background-color': selectedCoat?.color }"></div>
+      <div class="belly"
+           [ngStyle]="{ 'background-color': selectedBelly?.color }"></div>
+    </div>
   </div>
-  <pre class="color-code">
-    Coat: {{selectedCoat?.color.toUpperCase()}}
-    Belly: {{selectedBelly?.color.toUpperCase()}}
-  </pre>
+  <div class="column is-12">
+    <div class="color-code">Coat: {{selectedCoat?.color.toUpperCase()}}</div>
+    <div class="color-code">Belly: {{selectedBelly?.color.toUpperCase()}}</div>
+  </div>
 </div>
-<color-palette [name]="'Coat'"
-               [color-list]="data.coatColors"
-               (onSelect)="updateCoat($event)"></color-palette>
-<color-palette [name]="'Belly'"
-               [color-list]="data.bellyColors"
-               (onSelect)="updateBelly($event)"></color-palette>

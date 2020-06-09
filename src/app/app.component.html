@@ -1,73 +1,172 @@
-<h1 id="app-title">Sergal Palette</h1>
-<sergal-list [data]="sergalData"></sergal-list>
-<div id="outlet-wrapper"
-     [@routerAnimation]="getRouteAnimation(route)">
-  <router-outlet #route="outlet"></router-outlet>
-</div>
-<div id="about"
-     [ngClass]="{ 'active': aboutToggle }">
-  <div id="about-toggle"
-       (click)="aboutToggle = !aboutToggle;"></div>
-  <div id="about-content">
-    <h2 class="about-titles">About the project</h2>
-    <p>
-      Howdy! I'm Marcos Koga(aka Koga SilverDragon) and did this little project(Which it's just a draft and I want to make improve it later!) after
-      <a href="https://telegram.me/Maplesquid"
-         target="_blank"
-         rel="noopener noreferrer">Drago's</a>
-      idea, redesigned by
-      <a href="https://telegram.me/FlamSinger"
-         target="_blank"
-         rel="noopener noreferrer">Flam</a>
-      and with fresh new info from
-      <a href="https://telegram.me/Tenteraten_CR"
-         target="_blank"
-         rel="noopener noreferrer">Kiki</a>!
-    </p>
-    <p>Thanks a lot for the help! 💙</p>
-    <p>If you have any feedback and/or suggestions, feel free to poke me at Telegram!</p>
-    <p>My handle is:
-      <a href="https://telegram.me/KogaSilverDragon"
-      target="_blank"
-      rel="noopener noreferrer">@KogaSilverDragon</a>
-    </p>
-    <h2 class="about-titles">About Vilous</h2>
-    <ul id="about-links">
-      <li>Vilous - Artwork and Design @
-        <a href="http://www.furaffinity.net/user/mick39"
-           target="_blank"
-           rel="noopener noreferrer">Mick39’s FA</a>
-      </li>
-      <li>Vilous - Story and Lore @
-        <a href="http://www.furaffinity.net/user/Kiki-UMA"
-           target="_blank"
-           rel="noopener noreferrer">Kiki’s FA</a>
-      </li>
-      <li>
-        <a href="https://www.patreon.com/mick39"
-           target="_blank"
-           rel="noopener noreferrer">Mick39’s Patreon</a>
-      </li>
-      <li>
-        <a href="https://www.patreon.com/Tenteraten"
-           target="_blank"
-           rel="noopener noreferrer">
-          Kiki’s Patreon for Vilous concepts in development
+<section class="hero is-fullheight">
+  <div class="hero-head">
+    <nav class="navbar"
+         role="navigation"
+         aria-label="main navigation">
+      <div class="navbar-brand">
+        <h1 class="navbar-item">
+          <span class="title">Sergal Palette</span>
+        </h1>
+
+        <a role="button"
+           class="navbar-burger burger"
+           [ngClass]="{ 'is-active': menuToggle }"
+           aria-label="menu"
+           aria-expanded="false"
+           data-target="navbarBasicExample"
+           (click)="menuToggle = !menuToggle;">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
         </a>
-      </li>
-      <li>
-        <a href="http://vilous.net/"
-           target="_blank"
-           rel="noopener noreferrer">Vilous official website</a>
-      </li>
-      <li>
-        <a href="http://vilous.net/wiki/Vilous_Wiki"
-           target="_blank"
-           rel="noopener noreferrer">Vilous official Wiki</a>
-      </li>
-    </ul>
+      </div>
+
+      <div id="navbarBasicExample"
+           class="navbar-menu"
+           [ngClass]="{ 'is-active': menuToggle }">
+        <div class="navbar-start">
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">Type</a>
+
+            <div class="navbar-dropdown">
+              <a class="navbar-item"
+                  routerLinkActive="is-active"
+                  *ngFor="let sergal of sergalData"
+                  [routerLink]="['/', sergal.type]">{{sergal.name}}
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-light"
+                 (click)="aboutToggle = true;">About</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
   </div>
+
+  <div class="hero-body"
+       [@routerAnimation]="getRouteAnimation(route)">
+    <router-outlet #route="outlet"></router-outlet>
+  </div>
+
+  <div class="hero-foot">
+    <nav class="tabs is-boxed is-dark is-fullwidth">
+      <div class="container">
+        <ul>
+          <li>
+            <a class="has-background-dark has-text-white"
+               (click)="selectedPalette = 'coat'">Coat</a>
+          </li>
+          <li>
+            <a class="has-background-dark has-text-white"
+               (click)="selectedPalette = 'belly'">Belly</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</section>
+
+
+<color-palette name="Coat"
+               [color-list]="coatColors"
+               [selected-color]="selectedCoat"
+               *ngIf="isCoatSelected()"
+               (onSelect)="selectedCoat = $event"
+               (onClose)="closePalette()"></color-palette>
+<color-palette name="Belly"
+               [color-list]="bellyColors"
+               [selected-color]="selectedBelly"
+               *ngIf="isBellySelected()"
+               (onSelect)="selectedBelly = $event"
+               (onClose)="closePalette()"></color-palette>
+
+
+<!--<h1 class="title has-text-centered">Sergal Palette</h1>-->
+<!--<sergal-list [data]="sergalData"></sergal-list>-->
+<div class="modal"
+     [ngClass]="{ 'is-active': aboutToggle }">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <div class="box">
+      <div class="content">
+
+        <h2 class="title is-4">About the project</h2>
+        <p>
+          Howdy! I'm Marcos Koga(aka Koga SilverDragon) and did this little project(Which it's just a draft and I want to make improve it later!) after
+          <a href="https://telegram.me/Maplesquid"
+             target="_blank"
+             rel="noopener noreferrer">Drago's</a>
+          idea, redesigned by
+          <a href="https://telegram.me/FlamSinger"
+             target="_blank"
+             rel="noopener noreferrer">Flam</a>
+          and with fresh new info from
+          <a href="https://telegram.me/Tenteraten_CR"
+             target="_blank"
+             rel="noopener noreferrer">Kiki</a>!
+        </p>
+        <p>Thanks a lot for the help! 💙</p>
+        <p>If you have any feedback and/or suggestions, feel free to poke me at Telegram!</p>
+        <p>My handle is:
+          <a href="https://telegram.me/KogaSilverDragon"
+             target="_blank"
+             rel="noopener noreferrer">@KogaSilverDragon</a>
+        </p>
+        <h2 class="title is-4">About Vilous</h2>
+        <p>
+          Vilous - Artwork and Design @
+          <a href="http://www.furaffinity.net/user/mick39"
+             target="_blank"
+             rel="noopener noreferrer">Mick39’s FA</a>
+          <br />
+          Vilous - Story and Lore @
+          <a href="http://www.furaffinity.net/user/Kiki-UMA"
+             target="_blank"
+             rel="noopener noreferrer">Kiki’s FA</a>
+          <br />
+          <a href="https://www.patreon.com/mick39"
+             target="_blank"
+             rel="noopener noreferrer">Mick39’s Patreon</a>
+          <br />
+          <a href="https://www.patreon.com/Tenteraten"
+             target="_blank"
+             rel="noopener noreferrer">
+            Kiki’s Patreon for Vilous concepts in development
+          </a>
+          <br />
+          <a href="http://vilous.net/"
+             target="_blank"
+             rel="noopener noreferrer">Vilous official website</a>
+          <br />
+          <a href="http://vilous.net/wiki/Vilous_Wiki"
+             target="_blank"
+             rel="noopener noreferrer">Vilous official Wiki</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <button class="modal-close is-large"
+          aria-label="close"
+          (click)="aboutToggle = false;"></button>
 </div>
+
+
+<!--<div id="about"-->
+<!--     -->
+<!--     >-->
+<!--&lt;!&ndash;  <div id="about-toggle"&ndash;&gt;-->
+<!--&lt;!&ndash;       (click)="aboutToggle = !aboutToggle;"></div>&ndash;&gt;-->
+<!--  <div id="about-content">-->
+<!--    -->
+<!--  </div>-->
+<!--</div>-->
 <div id="konami"
      [ngClass]="{ 'active': konamiActive }"
      (konami)="yay()">
