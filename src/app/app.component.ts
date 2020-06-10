@@ -1,13 +1,7 @@
 import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {AppService} from './app.service';
-import {
-  trigger,
-  style,
-  animate,
-  transition,
-  query,
-} from '@angular/animations';
-import {ActivatedRoute, NavigationEnd, Router, RoutesRecognized} from '@angular/router';
+import {animate, query, style, transition, trigger} from '@angular/animations';
+import {NavigationEnd, Router, RoutesRecognized} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
 
 declare let ga: Function;
@@ -35,15 +29,30 @@ export interface ColorInfo {
       transition('* <=> *', [
         // Initial state of new route
         query(':enter',
-          style({ transform: 'translateX(-100%)' }),
+          style({
+            opacity: 0,
+            position: 'absolute',
+            transform: 'initial',
+            width: '100%',
+            height: '100%',
+            padding: '1rem 1.5rem 2rem',
+            top: 0,
+            left: 0
+          }),
           {optional: true}),
 
         // move page off screen right on leave
         query(':leave',
           animate('200ms ease-in',
             style({
-              transform: 'translateX(100%)',
-              position: 'absolute'
+              opacity: 0,
+              position: 'absolute',
+              transform: 'initial',
+              width: '100%',
+              height: '100%',
+              padding: '1rem 1.5rem 2rem',
+              top: 0,
+              left: 0
             })
           ),
           {optional: true}),
@@ -51,7 +60,16 @@ export interface ColorInfo {
         // move page in screen from left to right
         query(':enter',
           animate('200ms ease-out',
-            style({ transform: 'translateX(0%)' })
+            style({
+              opacity: 1,
+              position: 'absolute',
+              transform: 'initial',
+              width: '100%',
+              height: '100%',
+              padding: '1rem 1.5rem 2rem',
+              top: 0,
+              left: 0
+            })
           ),
           {optional: true}),
       ])

@@ -3,101 +3,16 @@
 @import "~ceaser-easing/ceaser-easings";
 @import "../assets/fonts/luzsans-book/luzsans-book";
 
-.hero-body {
-  padding: 1rem 1.5rem 2rem;
-}
-
-#about {
-  width: 100%;
+.hero {
   height: 100%;
 
-  font-family: "LuzSans-Book";
-  position: absolute;
-  background-color: rgba(30, 30, 30, 0);
-  pointer-events: none;
-  z-index: 9999;
-  overflow: hidden;
-  @include transition(.5s ease);
-  &-toggle {
-    width: 200px;
-    height: 200px;
+  &-body {
+    padding: 1rem 1.5rem 2rem;
+    flex: 1 1 auto;
 
-    position: absolute;
-    top: -70px;
-    right: -70px;
-    background-color: #646464;
-    color: #FFF;
-    cursor: pointer;
-    pointer-events: initial;
-    @include rotate(30deg);
-    @include transition(.4s $easeOutCirc);
-    @include user-select(none);
-    &:before {
-      content: 'About';
-      position: absolute;
-      bottom: 0;
-    }
-    &:after {
-      content: 'Close';
-      @include rotate(180deg);
-    }
-    &:before,
-    &:after {
-      display: block;
-      padding: 25px 30px;
-      font-size: 18px;
-    }
+    overflow: hidden;
+    position: relative;
   }
-  &-content {
-    padding: 40px;
-    font-size: 16px;
-    width: 600px;
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    @include translate(-50%, -50%);
-    background-color: #646464;
-    color: #FFF;
-    opacity: 0;
-    p {
-      line-height: 1.2;
-      margin-bottom: 10px;
-    }
-  }
-    &-links {
-      line-height: 1.4;
-    }
-  a { @include transition(.2s ease); }
-
-  a:link,
-  a:visited,
-  a:active {
-    color: #FFF;
-  }
-  a:focus,
-  a:hover {
-    background-color: #EFEFEF;
-    color: #646464;
-  }
-  &.active {
-    background-color: rgba(20, 20, 20, .8);
-    pointer-events: initial;
-
-    #about {
-      &-toggle {
-        @include rotate(210deg);
-      }
-      &-content {
-        opacity: 1;
-      }
-    }
-  }
-}
-
-.about-titles {
-  font-size: 24px;
-  margin-bottom: 10px;
 }
 
 #konami {

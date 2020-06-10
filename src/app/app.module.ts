@@ -11,6 +11,7 @@ import {RouteReuseStrategy} from '@angular/router';
 import {CustomReuseStrategy} from './custom-reuse-strategy';
 import {AppService} from './app.service';
 import {KonamiModule} from './ngx-konami';
+import {APP_BASE_HREF} from '@angular/common';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import {KonamiModule} from './ngx-konami';
   ],
   providers: [
     {provide: RouteReuseStrategy, useClass: CustomReuseStrategy},
+    {provide: APP_BASE_HREF, useValue: '/sergal-palette'},
     AppService,
   ],
   bootstrap: [AppComponent]

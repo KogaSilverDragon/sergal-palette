@@ -1,4 +1,4 @@
-<section class="hero is-fullheight">
+<section class="hero">
   <div class="hero-head">
     <nav class="navbar"
          role="navigation"
@@ -87,17 +87,13 @@
                (onSelect)="selectedBelly = $event"
                (onClose)="closePalette()"></color-palette>
 
-
-<!--<h1 class="title has-text-centered">Sergal Palette</h1>-->
-<!--<sergal-list [data]="sergalData"></sergal-list>-->
 <div class="modal"
      [ngClass]="{ 'is-active': aboutToggle }">
   <div class="modal-background"></div>
   <div class="modal-content">
     <div class="box">
       <div class="content">
-
-        <h2 class="title is-4">About the project</h2>
+        <h2 class="title is-4">About this project</h2>
         <p>
           Howdy! I'm Marcos Koga(aka Koga SilverDragon) and did this little project(Which it's just a draft and I want to make improve it later!) after
           <a href="https://telegram.me/Maplesquid"
@@ -111,15 +107,27 @@
           <a href="https://telegram.me/Tenteraten_CR"
              target="_blank"
              rel="noopener noreferrer">Kiki</a>!
-        </p>
-        <p>Thanks a lot for the help! 💙</p>
-        <p>If you have any feedback and/or suggestions, feel free to poke me at Telegram!</p>
-        <p>My handle is:
+          <br />
+          Thanks a lot for the help! 💙</p>
+        <p>
+          If you have any feedback and/or suggestions,
           <a href="https://telegram.me/KogaSilverDragon"
              target="_blank"
-             rel="noopener noreferrer">@KogaSilverDragon</a>
+             rel="noopener noreferrer">feel free to poke me on Telegram!</a>
         </p>
-        <h2 class="title is-4">About Vilous</h2>
+        <p class="notification is-info is-light">
+          Did you like it?
+          <a href="https://ko-fi.com/kogasilverdragon"
+             target="_blank"
+             rel="noopener noreferrer">Please consider buying me a coffee! ☕</a>
+        </p>
+
+        <h3 class="subtitle is-4">What's new?</h3>
+        <p>
+          Since the majority of accesses were from mobile, I added a CSS framework in order to adapt the whole interface to mobile devices very quickly. So, now it works on smartphones, hooray!
+        </p>
+
+        <h2 class="title is-4">More about Vilous</h2>
         <p>
           Vilous - Artwork and Design @
           <a href="http://www.furaffinity.net/user/mick39"
@@ -157,16 +165,6 @@
           (click)="aboutToggle = false;"></button>
 </div>
 
-
-<!--<div id="about"-->
-<!--     -->
-<!--     >-->
-<!--&lt;!&ndash;  <div id="about-toggle"&ndash;&gt;-->
-<!--&lt;!&ndash;       (click)="aboutToggle = !aboutToggle;"></div>&ndash;&gt;-->
-<!--  <div id="about-content">-->
-<!--    -->
-<!--  </div>-->
-<!--</div>-->
 <div id="konami"
      [ngClass]="{ 'active': konamiActive }"
      (konami)="yay()">

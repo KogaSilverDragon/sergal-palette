@@ -1,16 +1,14 @@
-<div class="sergal {{type}} columns is-multiline">
-  <div class="column is-12">
-    <div class="side"
-          *ngIf="type">
-      <img class="lines"
-           [src]="'./assets/images/' + type + '/side.png'"/>
-      <div class="coat"
-           [ngStyle]="{ 'background-color': selectedCoat?.color }"></div>
-      <div class="belly"
-           [ngStyle]="{ 'background-color': selectedBelly?.color }"></div>
-    </div>
+<div class="sergal {{type}}">
+  <div class="sergal-image"
+        *ngIf="type">
+    <img class="lines"
+         [src]="'./assets/images/' + type + '/side.png'"/>
+    <div class="coat"
+         [ngStyle]="{ 'background-color': selectedCoat?.color }"></div>
+    <div class="belly"
+         [ngStyle]="{ 'background-color': selectedBelly?.color }"></div>
   </div>
-  <div class="column is-12">
+  <div class="sergal-color">
     <div class="color-code">Coat: {{selectedCoat?.color.toUpperCase()}}</div>
     <div class="color-code">Belly: {{selectedBelly?.color.toUpperCase()}}</div>
   </div>
